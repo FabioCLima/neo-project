@@ -1,0 +1,37 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project specific
+.ruff_cache/
+saved_result_data/
+uv.lock
+
+# Ignore JSON files except data files
+*.json
+!data/cad.json
+!tests/test-cad-2020.json
+
+# Keep LICENSE and README.md
+!LICENSE
+!README.md
