@@ -35,3 +35,6 @@ uv.lock
 # Keep LICENSE and README.md
 !LICENSE
 !README.md
+
+# Windows Zone.Identifier files
+*:Zone.Identifier
