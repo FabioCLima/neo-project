@@ -71,6 +71,12 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return a string representation of this filter.
+
+        Returns:
+            str: A string representation showing the filter class name,
+                 operator, and reference value.
+        """
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
@@ -79,6 +85,14 @@ class DateFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Get the date from the close approach.
+
+        Args:
+            approach (CloseApproach): A CloseApproach object.
+
+        Returns:
+            date: The date of the close approach.
+        """
         return approach.time.date()
 
 
@@ -87,6 +101,14 @@ class DistanceFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Get the distance from the close approach.
+
+        Args:
+            approach (CloseApproach): A CloseApproach object.
+
+        Returns:
+            float: The nominal approach distance in astronomical units.
+        """
         return approach.distance
 
 
@@ -95,6 +117,14 @@ class VelocityFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Get the velocity from the close approach.
+
+        Args:
+            approach (CloseApproach): A CloseApproach object.
+
+        Returns:
+            float: The relative approach velocity in kilometers per second.
+        """
         return approach.velocity
 
 
@@ -103,6 +133,14 @@ class DiameterFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Get the diameter from the NEO in the close approach.
+
+        Args:
+            approach (CloseApproach): A CloseApproach object.
+
+        Returns:
+            float: The diameter of the NEO in kilometers, or NaN if NEO is None.
+        """
         return approach.neo.diameter if approach.neo else float("nan")
 
 
@@ -111,6 +149,15 @@ class HazardousFilter(AttributeFilter):
 
     @classmethod
     def get(cls, approach):
+        """Get the hazardous status from the NEO in the close approach.
+
+        Args:
+            approach (CloseApproach): A CloseApproach object.
+
+        Returns:
+            bool: True if the NEO is potentially hazardous, False otherwise.
+                 Returns False if NEO is None.
+        """
         return approach.neo.hazardous if approach.neo else False
 
 
